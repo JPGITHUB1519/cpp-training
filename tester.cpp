@@ -1,7 +1,11 @@
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 int main()
 {
-	std::cout << "Hello Word";
+	string  mystring = R"(\n Hellow)";
+	cout << mystring << endl;
 	return 0;
 }

@@ -1,0 +1,16 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    { "key": "ctrl+b","command": "code-runner.run" },
+    
+    // go - to terminal and return to the text editor again
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.action.openLastEditorInGroup",
+        "when": "terminalFocus"
+    }
+]

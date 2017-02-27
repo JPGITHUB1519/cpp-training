@@ -1,0 +1,105 @@
+1- Install Visual Studio Code
+
+2- Install Code Runner Extension
+
+3- To run in terminal
+
+Put in Settings/User Setings
+
+To set whether to run code in Integrated Terminal (only support to run whole file in Integrated Terminal, neither untitled file nor code snippet) (default is false):
+
+{
+    "code-runner.runInTerminal": false
+}
+
+4- To run with ctrl + b in key Biddings
+In Key Biddings to 
+
+// Place your key bindings in this file to overwrite the defaults
+[
+    { "key": "ctrl+b","command": "code-runner.run" }
+]
+
+5- Save Before Run
+
+// save file before run
+    "code-runner.saveFileBeforeRun": true,
+
+6- // go - to terminal and return to the text editor again
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.action.openLastEditorInGroup",
+        "when": "terminalFocus"
+    }
+
+7- To Modify The Way the Runner runs the commands Put in the User settings :
+
+{
+    "window.zoomLevel": 0,
+    // run code in terminal
+    "code-runner.runInTerminal": true,
+    // save file before run
+    "code-runner.saveFileBeforeRun": true,
+    // modify the way in call executor
+    "code-runner.executorMap": {
+    "javascript": "node",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "cpp": "cd $dir && clear && g++ $fileName -o $fileNameWithoutExt && $fileNameWithoutExt",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "php": "php",
+    "python": "python",
+    "perl": "perl",
+    "ruby": "ruby",
+    "go": "go run",
+    "lua": "lua",
+    "groovy": "groovy",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "bash",
+    "fsharp": "fsi",
+    "csharp": "scriptcs",
+    "vbscript": "cscript //Nologo",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "scala": "scala",
+    "swift": "swift",
+    "julia": "julia",
+    "crystal": "crystal",
+    "ocaml": "ocaml",
+    "r": "Rscript",
+    "applescript": "osascript",
+    "clojure": "lein exec",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "racket": "racket"
+  }
+}
+
+8- To quit Error  include file not found in include directory
+
+http://stackoverflow.com/questions/39430277/visual-studio-code-include-file-not-found-in-include-directory-windows-10
+
+You have to create a c_cpp_properties.json first (use Ctrl+Shift+P and "C/Cpp: Edit Configurations" command).
+
+Add inlude paths as,
+
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "path_to_your/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+      ],
+      "browse": {
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      }
+    }
+  ]
+}
